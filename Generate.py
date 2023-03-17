@@ -155,10 +155,11 @@ class Card:
         draw = ImageDraw.Draw(letter)
         font = ImageFont.truetype('pixeloid-sans/PixeloidSans-Bold.ttf', 136)
         (width, height) = draw.textsize(self.value, font=font)
+        fill = '#EC1D24' if self.suit == hearts or self.suit == diamonds else 'black'
         draw.text(
             (SMALL_SUIT_SIZE - width / 2 , SMALL_SUIT_SIZE - height / 2),
             self.value,
-            fill='black',
+            fill=fill,
             font=font
         )
         extra_x = 0 if len(self.value) == 1 else 16
@@ -175,5 +176,5 @@ class Card:
         return self.img
 
             
-aceSpades = Card(spades, "9")
+aceSpades = Card(hearts, "9")
 aceSpades.make_image().save("card.png")
